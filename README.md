@@ -43,7 +43,3 @@ npm run dev
 - `src/main.js` : メインのJavaScriptロジック
 - `src/style.css` : スタイルシート
 - `public/sea-current.png` : RGBエンコードされた海流データ画像
-
-## ライセンス
-
-このリポジトリはMITライセンスです。

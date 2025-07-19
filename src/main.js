@@ -4,6 +4,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import './style.css'
 import * as WeatherLayers from 'weatherlayers-gl';
 
+const sourceImage = WeatherLayers.loadTextureData('https://d3ladc09mpyc4n.cloudfront.net/sea-current.png');
+
 const map = new maplibregl.Map({
   container: 'map',
   style: 'https://raw.githubusercontent.com/geolonia/basic-gsiseamlessphoto/main/style.json',
@@ -16,27 +18,27 @@ const map = new maplibregl.Map({
 
 map.on('load', async () => {
 
-  map.setProjection({
-    type: 'globe', // Set projection to globe
-  });
-
-  const image = await WeatherLayers.loadTextureData('./sea-current.png');
+  const image = await sourceImage;
 
   const deckOverlay = new MapboxOverlay({
     interleaved: true,
     layers: [
       new WeatherLayers.ParticleLayer({
         id: 'particle',
-        numParticles: 5000,
+        numParticles: 10000,
         maxAge: 10,
-        speedFactor: 3,
+        speedFactor: 80,
         width: 2.0,
         opacity: 0.05,
         image: image,
         bounds: [-180, -90, 180, 90],
-        imageUnscale: [-128, 127],
+        imageUnscale: [-12.75, 12.75],
       }),
     ]
+  });
+
+  map.setProjection({
+    type: 'globe', // Set projection to globe
   });
 
   map.addControl(deckOverlay);

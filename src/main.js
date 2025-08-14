@@ -31,7 +31,7 @@ map.on('load', async () => {
         width: 2.0,
         opacity: 0.05,
         image: image,
-        bounds: [-180, -90, 180, 90],
+        bounds: [-180, -80, 180, 90],
         imageUnscale: [-12.75, 12.75],
       }),
     ]
